@@ -1,0 +1,24 @@
+{
+  "name": "430project1",
+  "version": "1.0.0",
+  "description": "The project requires building a Node.js server that serves static HTML and a custom API built from scratch. It includes a user-friendly webpage for data interaction and an API documentation page. Data loads from a file at startup, with no persistence after restart. A provided or personal dataset can be used.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lailaporter55/430Project1.git"
+  },
+  "author": "Laila Porter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lailaporter55/430Project1/issues"
+  },
+  "homepage": "https://github.com/lailaporter55/430Project1#readme",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.32.0"
+  }
+}
