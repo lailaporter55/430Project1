@@ -41,4 +41,16 @@ const addBook = (request, response, body) => {
 }
     books[title] = title; 
     books[author] = author;
-}
+
+    if(status === 201) {
+        responseJSON.message = 'Created Successfully';
+        respondJSON(request, response, status, responseJSON);
+        return respondJSON(request, response, status, responseJSON);
+    }
+    return respondJSON(request, response, status);
+}; 
+
+module.exports = {
+    getBooks,
+    addBook,
+};
