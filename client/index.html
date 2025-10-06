@@ -7,13 +7,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Book Application</h1>
+    <h1>Porter Public Library</h1>
     <label>Search Books GET HEAD</label>
     <select id="books">
         <form action="/getBooks" method="GET">
-            <input type="search" value="all">All Books</input>
             <input type="search" value="author">Author</input>
             <input type="search" value="title">Title</input>
+            <button type="searchBooks">Search</button>
+        </form>
+
+        <form action="/checkOutBooks" method="POST">
+            <input type="search" value="author">Author</input>
+            <input type="search" value="title">Title</input>
+        </form>
+        <form action="/returnBooks" method="POST">
+            <input type="search" value="author">Author</input>
+            <input type="search" value="title">Title</input>
+        </form>
+        <form action="/rateBooks" method="POST">
+            <input type="search" value="all">Title</input>
+            <input type="search" value="rating">Rating 1-5</input>
         </form>
     </select>
     
