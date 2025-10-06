@@ -58,7 +58,9 @@ const URLStruct = {
     '/': handleGET,
     '/style.css': handleGET,
     '/getBooks': handleGET,
-    '/addBook': handlePOST,
+    '/checkoutBook': handlePOST,
+    '/returnBook': handlePOST,
+    '/rateBook': handlePOST,
     notFound: jsonHandler.notFound,
 };
 
