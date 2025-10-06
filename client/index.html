@@ -10,13 +10,19 @@
     <h1>Porter Public Library</h1>
     <label>Search Books GET HEAD</label>
     <select id="books">
-        <form action="/getBooks" method="GET">
+        <form action="/getBooks" method="GET" method="HEAD">
             <input type="search" value="author">Author</input>
             <input type="search" value="title">Title</input>
+            <radio></radio>
             <button type="searchBooks">Search</button>
         </form>
 
         <form action="/checkOutBooks" method="POST">
+            <input type="search" value="author">Author</input>
+            <input type="search" value="title">Title</input>
+
+        </form>
+        <form action="/checkedOutBooks" method="POST">
             <input type="search" value="author">Author</input>
             <input type="search" value="title">Title</input>
         </form>
