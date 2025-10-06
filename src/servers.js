@@ -45,6 +45,22 @@ const handlePOST = (request, response, parsedURL) => {
     }
 }; 
 
+const handleHEAD = (request, response, parsedURL) => {
+    if (parsedURL.pathname === '/getBooks') {
+        jsonHandler.getBooks(request, response);
+    }
+    else {
+        jsonHandler.notFound(request, response);
+    }
+};
+
+const URLStruct = {
+    '/': handleGET,
+    '/style.css': handleGET,
+    '/getBooks': handleGET,
+    '/addBook': handlePOST,
+    notFound: jsonHandler.notFound,
+};
 
 const onRequest = (request, response) => {
     const protocol = request.conection.encrypted ? 'https' : 'http';
