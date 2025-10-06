@@ -5,22 +5,46 @@ const jsonHandler = require('./jsonResponses.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
-const URLStruct = {
-    GET: {
-        '/': htmlHander.getIndex,
-        '/style.css': htmlHander.getCSS,
-        '/getBooks': jsonHandler.getBooks,
-        notFound: jsonHandler.notFound,
-    },
-    HEAD: {
-        '/getBooks': jsonHandler.getBooksMeta,
-        notFound: jsonHandler.notFoundMeta,
-    },
-    POST: {
-        '/addBook': jsonHandler.addBook,
-        notFound: jsonHandler.notFound,
-    },
+const parseBody = (request, response, callback) => {
+    const body = [];
+    request.on('error', (err) => {
+        console.dir(err);
+        response.statusCode = 400;
+        response.end();
+    });
+    request.on('data', (chunk) => {
+        body.push(chunk);
+    });
+    request.on('end', () => {
+        const bodyString = Buffer.concat(body).toString();
+        const bodyParams = query.parse(bodyString);
+        callback(request, response, bodyParams);
+    });
 };
+
+const handleGET = (request, response, parsedURL) => {
+    if (parsedURL.pathname === '/') {
+        htmlHander.getIndex(request, response);
+    }
+    else if (parsedURL.pathname === '/style.css') {
+        htmlHander.getCSS(request, response);
+    }
+    else if (parsedURL.pathname === '/getBooks') {
+        jsonHandler.getBooks(request, response);
+    }
+    else {
+        jsonHandler.notFound(request, response);
+    }
+};
+const handlePOST = (request, response, parsedURL) => {
+    if (parsedURL.pathname === '/addBook') {
+        parseBody(request, response, jsonHandler.addBook);
+    }
+    else {
+        jsonHandler.notFound(request, response);
+    }
+}; 
+
 
 const onRequest = (request, response) => {
     const protocol = request.conection.encrypted ? 'https' : 'http';

@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project 1</title>
     <link rel="stylesheet" href="styles.css">
-    <script>
-        
-    </script>
 </head>
 <body>
+    <h1>Book Application</h1>
+    <label>Search Books GET HEAD</label>
+    <select id="books">
+        <form action="/getBooks" method="GET">
+            <input type="search" value="all">All Books</input>
+            <input type="search" value="author">Author</input>
+            <input type="search" value="title">Title</input>
+        </form>
+    </select>
     
 </body>
 </html>
