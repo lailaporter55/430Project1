@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project 1</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+
+
+    </script>
 </head>
+
 <body>
     <h1>Porter Public Library</h1>
     <label>Search Books GET HEAD</label>
-    <select id="books">
-        <form action="/getBooks" method="GET" method="HEAD">
-            <input type="search" value="author">Author</input>
-            <input type="search" value="title">Title</input>
-            <radio></radio>
-            <button type="searchBooks">Search</button>
-        </form>
+    <form id="getbooks" action="/getBooks" method="GET" method="HEAD">
+        <input type="search" value="author">Author</input>
+        <input type="search" value="title">Title</input>
+        <label><input type="radio" name="method" value="GET" checked> GET</label>
+        <label><input type="radio" name="method" value="HEAD"> HEAD</label>
+        <button type="searchBooks">Search</button>
+    </form>
+    <label>Borrow Books POST</label>
+    <form id="returnbooks" action="/returnBooks" method="POST">
+        <input type="search" value="author">Author</input>
+        <input type="search" value="title">Title</input>
+    </form>
+    <label>Rate Books POST</label>
+    <form id="ratebooks" action="/rateBooks" method="POST">
+        <input type="search" value="all">Title</input>
+        <input type="number" id="filmRating" min="1" max="5" value="1"><br>
+        <button onclick="rateFilm()">Send Request</button>
+    </form>
 
-        <form action="/checkOutBooks" method="POST">
-            <input type="search" value="author">Author</input>
-            <input type="search" value="title">Title</input>
+    <section id="content">
+    </section>
 
-        </form>
-        <form action="/checkedOutBooks" method="POST">
-            <input type="search" value="author">Author</input>
-            <input type="search" value="title">Title</input>
-        </form>
-        <form action="/returnBooks" method="POST">
-            <input type="search" value="author">Author</input>
-            <input type="search" value="title">Title</input>
-        </form>
-        <form action="/rateBooks" method="POST">
-            <input type="search" value="all">Title</input>
-            <input type="search" value="rating">Rating 1-5</input>
-        </form>
-    </select>
-    
 </body>
+
 </html>

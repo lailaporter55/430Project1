@@ -56,9 +56,8 @@ const handleHEAD = (request, response, parsedURL) => {
 
 const URLStruct = {
     '/': handleGET,
-    '/style.css': handleGET,
-    '/getBooks': handleGET,
-    '/checkoutBook': handlePOST,
+    '/style.css': handleGET, handleHEAD, 
+    '/getBooks': handleGET, handleHEAD, 
     '/returnBook': handlePOST,
     '/rateBook': handlePOST,
     notFound: jsonHandler.notFound,
