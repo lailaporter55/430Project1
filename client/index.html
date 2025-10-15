@@ -34,6 +34,78 @@
             }
         }
 
+        const searchBooks = (e) => {
+            e.preventDefault();
+
+            const form = document.querySelector('#getbooks');
+            const author = form.author.value;
+            const title = form.title.value;
+            const method = form.method.value;
+
+            let url = `/getBooks?author=${author}&title=${title}`;
+
+            fetch(url, { method })
+                .then(handleResponse)
+                .catch((err) => console.error(err));
+        };
+        
+        const rateFilm = (e) => {
+            e.preventDefault();
+
+            const form = document.querySelector('#ratebooks');
+            const title = form.title.value;
+            const rating = form.filmRating.value;
+
+            const url = '/rateBooks';
+
+            const body = {
+                title,
+                rating,
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body),
+            })
+                .then(handleResponse)
+                .catch((err) => console.error(err));
+        };
+
+        const requestBook = (e) => {
+            e.preventDefault();
+            //grab the values from the form
+            const form = document.querySelector('#requestbooks');
+            const author = form.author.value;
+            const title = form.title.value;
+
+            const url = '/requestBooks';
+
+            const body = {
+                author,
+                title,
+            };
+            //make the fetch call
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body),
+            })
+                .then(handleResponse)
+                .catch((err) => console.error(err));
+        };
+
+        const init = () => {
+            document.querySelector('#getbooks').addEventListener('submit', searchBooks);
+            document.querySelector('#ratebooks').addEventListener('submit', rateFilm);
+            document.querySelector('#requestbooks').addEventListener('submit', requestBook);
+        };
+
+
     </script>
 </head>
 
@@ -45,7 +117,7 @@
         <input type="search" value="title">Title</input>
         <label><input type="radio" name="method" value="GET" checked> GET</label>
         <label><input type="radio" name="method" value="HEAD"> HEAD</label>
-        <button type="searchBooks">Search</button>
+        <button onclick="searchBooks()" type="searchBooks">Search</button>
     </form>
     <label>Request Books POST</label>
     <form id="requestbooks" action="/requestBooks" method="POST">
