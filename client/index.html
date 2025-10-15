@@ -48,31 +48,6 @@
                 .then(handleResponse)
                 .catch((err) => console.error(err));
         };
-        
-        const rateFilm = (e) => {
-            e.preventDefault();
-
-            const form = document.querySelector('#ratebooks');
-            const title = form.title.value;
-            const rating = form.filmRating.value;
-
-            const url = '/rateBooks';
-
-            const body = {
-                title,
-                rating,
-            };
-
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body),
-            })
-                .then(handleResponse)
-                .catch((err) => console.error(err));
-        };
 
         const requestBook = (e) => {
             e.preventDefault();
@@ -98,10 +73,35 @@
                 .then(handleResponse)
                 .catch((err) => console.error(err));
         };
+        
+        const rateBooks = (e) => {
+            e.preventDefault();
+
+            const form = document.querySelector('#ratebooks');
+            const title = form.title.value;
+            const rating = form.filmRating.value;
+
+            const url = '/rateBooks';
+
+            const body = {
+                title,
+                rating,
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body),
+            })
+                .then(handleResponse)
+                .catch((err) => console.error(err));
+        };
 
         const init = () => {
             document.querySelector('#getbooks').addEventListener('submit', searchBooks);
-            document.querySelector('#ratebooks').addEventListener('submit', rateFilm);
+            document.querySelector('#ratebooks').addEventListener('submit', rateBooks);
             document.querySelector('#requestbooks').addEventListener('submit', requestBook);
         };
 
@@ -127,8 +127,8 @@
     <label>Rate Books POST</label>
     <form id="ratebooks" action="/rateBooks" method="POST">
         <input type="search" value="all">Title</input>
-        <input type="number" id="filmRating" min="1" max="5" value="1"><br>
-        <button onclick="rateFilm()">Send Request</button>
+        <input type="number" id="bookRating" min="1" max="5" value="1"><br>
+        <button onclick="rateBooks()">Send Request</button>
     </form>
 
     <section id="content">
