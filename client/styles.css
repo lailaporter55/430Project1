@@ -6,3 +6,18 @@ body{
     background-color: rgb(224, 116, 159);
     font-family: Arial, Helvetica, sans-serif;
 }
+input{
+    margin: 5px;
+    background-color: rgb(41, 33, 24);
+    color: white;
+}
+button{
+    margin: 5px;
+    background-color: rgb(41, 59, 33);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
