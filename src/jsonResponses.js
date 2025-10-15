@@ -137,6 +137,7 @@ const notFound = (request, response) => {
 module.exports = {
     getBooks,
     requestBook, 
-    rateBook
+    rateBook,
+    notFound,
     
 };
