@@ -7,7 +7,32 @@
     <title>Project 1</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-
+        const handleResponse = async (response) => {
+            const content = document.querySelector('#content');
+            //based on the status code, display message
+            switch (response.status) {
+                case 200:
+                    content.innerHTML = await response.text();
+                    break;
+                case 400:
+                    content.innerHTML = 'Bad Request';
+                    break;
+                case 401:
+                    content.innerHTML = 'Unauthorized';
+                    break;
+                case 403:
+                    content.innerHTML = 'Forbidden';
+                    break;
+                case 404:
+                    content.innerHTML = 'Not Found';
+                    break;
+                case 500:
+                    content.innerHTML = 'Internal Server Error';
+                    break;
+                default:
+                    content.innerHTML = `Error: ${response.status}`;
+            }
+        }
 
     </script>
 </head>
@@ -22,8 +47,8 @@
         <label><input type="radio" name="method" value="HEAD"> HEAD</label>
         <button type="searchBooks">Search</button>
     </form>
-    <label>Borrow Books POST</label>
-    <form id="returnbooks" action="/returnBooks" method="POST">
+    <label>Request Books POST</label>
+    <form id="requestbooks" action="/requestBooks" method="POST">
         <input type="search" value="author">Author</input>
         <input type="search" value="title">Title</input>
     </form>
